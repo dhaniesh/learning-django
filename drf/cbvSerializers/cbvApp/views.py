@@ -6,11 +6,18 @@ from cbvApp.serializers import StudentSerializer
 # from rest_framework.views import APIView
 # from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
 # from rest_framework.generics import GenericAPIView
-
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+# from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework import viewsets
 # Create your views here.
 
 
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+
+"""
+# Views using generics
 class StudentList(ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
@@ -21,7 +28,6 @@ class StudentDetails(RetrieveUpdateDestroyAPIView):
     serializer_class = StudentSerializer
 
 
-"""
 # Views using Mixins
 class StudentList(ListModelMixin, CreateModelMixin, GenericAPIView):
     queryset = Student.objects.all()

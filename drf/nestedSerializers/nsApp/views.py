@@ -22,10 +22,11 @@ class BookListView(ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     pagination_class = LimitOffsetPagination
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     # ^-startswith, =-exactmatch, $-regex
     filterset_fields = ['title', 'author']
     search_fields = ['title']
+    ordering_fields = ['title']
 
 class BookDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()

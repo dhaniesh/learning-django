@@ -6,7 +6,7 @@ from rest_framework.pagination import PageNumberPagination, LimitOffsetPaginatio
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
 # Create your views here.
 
 class BookPagination(PageNumberPagination):
@@ -31,7 +31,7 @@ class BookListView(ListCreateAPIView):
     ordering_fields = ['title']
 
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
 
 class BookDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()

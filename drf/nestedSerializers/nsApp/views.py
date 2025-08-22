@@ -23,6 +23,7 @@ class BookListView(ListCreateAPIView):
     serializer_class = BookSerializer
     pagination_class = LimitOffsetPagination
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    # ^-startswith, =-exactmatch, $-regex
     filterset_fields = ['title', 'author']
     search_fields = ['title']
 

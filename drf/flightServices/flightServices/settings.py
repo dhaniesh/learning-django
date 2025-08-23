@@ -38,8 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'flightApp'
 ]
+
+REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': [
+            'rest_framework.authentication.TokenAuthentication',
+        ],
+        # ... other DRF settings like DEFAULT_PERMISSION_CLASSES
+    }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

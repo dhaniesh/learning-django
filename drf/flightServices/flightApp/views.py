@@ -5,6 +5,7 @@ from flightApp.serializers import FlightSerializer, PassengerSerializer, Reserva
 from rest_framework.decorators import api_view
 from rest_framework.views import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 
@@ -41,6 +42,7 @@ def save_reservations(request):
 class FlightViewSet(ModelViewSet):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class PassengerViewSet(ModelViewSet):
